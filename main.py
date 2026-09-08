@@ -1,5 +1,8 @@
-name = "HEMI"
+print("=" * 35)
+print("      HEMI STUDENT ASSISTANT")
+print("=" * 35)
 
-print("Hello! I am", name)
-print("I am your smart student assistant.")
-print("Let's make studying easier!")
+user_name = input("Enter your name: ")
+
+print("\nWelcome,", user_name + "!")
+print("HEMI is ready to help you study.")
