@@ -28,10 +28,10 @@ if choice == "1":
 
         tasks.append(task)
 
-    print("\nYour tasks:")
+   print("\nYour tasks:")
 
-    for task in tasks:
-        print("-", task)
+for number, task in enumerate(tasks, start=1):
+    print(number, "-", task)
 
 elif choice == "2":
     print("\nGrade Calculator")
