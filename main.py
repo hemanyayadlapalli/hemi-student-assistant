@@ -18,7 +18,15 @@ choice = input("\nEnter your choice: ")
 if choice == "1":
     print("\nStudy Tasks")
 
-   
+    tasks = []
+
+    try:
+        with open("tasks.txt", "r") as file:
+            for line in file:
+                task, status = line.strip().split("|")
+                tasks.append([task, status])
+    except FileNotFoundError:
+        pass
 
     while True:
         task = input("Enter a study task (or type 'done' to finish): ")
@@ -26,37 +34,43 @@ if choice == "1":
         if task.lower() == "done":
             break
 
-      tasks.append(task)
+        tasks.append([task, "incomplete"])
 
-with open("tasks.txt", "w") as file:
-    for task in tasks:
-        file.write(task + "\n")
+    if tasks:
+        print("\nYour tasks:")
 
-    print("\nYour tasks:")
+        for number, task in enumerate(tasks, start=1):
+            status = task[1]
 
-    completed = []
+            if status == "complete":
+                print(number, "-", task[0], "[Completed]")
+            else:
+                print(number, "-", task[0])
 
-    for number, task in enumerate(tasks, start=1):
-        completed.append(False)
-        print(number, "-", task)
+        task_number = input(
+            "\nEnter the number of a completed task (or press Enter to skip): "
+        )
 
-    task_number = input(
-        "\nEnter the number of a completed task (or press Enter to skip): "
-    )
+        if task_number:
+            task_number = int(task_number)
 
-    if task_number:
-        task_number = int(task_number)
+            if 1 <= task_number <= len(tasks):
+                tasks[task_number - 1][1] = "complete"
 
-        if 1 <= task_number <= len(tasks):
-            completed[task_number - 1] = True
+        with open("tasks.txt", "w") as file:
+            for task in tasks:
+                file.write(task[0] + "|" + task[1] + "\n")
 
-    print("\nUpdated tasks:")
+        print("\nUpdated tasks:")
 
-    for number, task in enumerate(tasks, start=1):
-        if completed[number - 1]:
-            print(number, "-", task, "[Completed]")
-        else:
-            print(number, "-", task)
+        for number, task in enumerate(tasks, start=1):
+            if task[1] == "complete":
+                print(number, "-", task[0], "[Completed]")
+            else:
+                print(number, "-", task[0])
+
+    else:
+        print("\nNo tasks added yet.")
 
 elif choice == "2":
     print("\nGrade Calculator")
