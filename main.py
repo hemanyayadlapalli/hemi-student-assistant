@@ -20,10 +20,16 @@ if choice == "1":
 
     tasks = []
 
-    task = input("Enter a study task: ")
-    tasks.append(task)
+    while True:
+        task = input("Enter a study task (or type 'done' to finish): ")
+
+        if task.lower() == "done":
+            break
+
+        tasks.append(task)
 
     print("\nYour tasks:")
+
     for task in tasks:
         print("-", task)
 
