@@ -28,10 +28,29 @@ if choice == "1":
 
         tasks.append(task)
 
-   print("\nYour tasks:")
+  print("\nYour tasks:")
+
+completed = []
 
 for number, task in enumerate(tasks, start=1):
+    completed.append(False)
     print(number, "-", task)
+
+task_number = input("\nEnter the number of a completed task (or press Enter to skip): ")
+
+if task_number:
+    task_number = int(task_number)
+
+    if 1 <= task_number <= len(tasks):
+        completed[task_number - 1] = True
+
+print("\nUpdated tasks:")
+
+for number, task in enumerate(tasks, start=1):
+    if completed[number - 1]:
+        print(number, "-", task, "[Completed]")
+    else:
+        print(number, "-", task)
 
 elif choice == "2":
     print("\nGrade Calculator")
