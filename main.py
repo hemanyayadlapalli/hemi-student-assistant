@@ -18,7 +18,7 @@ choice = input("\nEnter your choice: ")
 if choice == "1":
     print("\nStudy Tasks")
 
-    tasks = []
+   
 
     while True:
         task = input("Enter a study task (or type 'done' to finish): ")
@@ -26,7 +26,11 @@ if choice == "1":
         if task.lower() == "done":
             break
 
-        tasks.append(task)
+      tasks.append(task)
+
+with open("tasks.txt", "w") as file:
+    for task in tasks:
+        file.write(task + "\n")
 
     print("\nYour tasks:")
 
