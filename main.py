@@ -18,6 +18,15 @@ choice = input("\nEnter your choice: ")
 if choice == "1":
     print("\nStudy Tasks")
 
+    tasks = []
+
+    task = input("Enter a study task: ")
+    tasks.append(task)
+
+    print("\nYour tasks:")
+    for task in tasks:
+        print("-", task)
+
 elif choice == "2":
     print("\nGrade Calculator")
 
