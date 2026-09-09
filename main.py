@@ -15,4 +15,20 @@ print("5. Exit")
 
 choice = input("\nEnter your choice: ")
 
-print("\nYou selected option", choice)
+if choice == "1":
+    print("\nStudy Tasks")
+
+elif choice == "2":
+    print("\nGrade Calculator")
+
+elif choice == "3":
+    print("\nStudy Timer")
+
+elif choice == "4":
+    print("\nQuiz")
+
+elif choice == "5":
+    print("\nGoodbye,", user_name + "!")
+
+else:
+    print("\nInvalid choice. Please select a number from 1 to 5.")
